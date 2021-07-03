@@ -1,5 +1,5 @@
 <?php
-	define('DBUSER','root');
-    define('DBPWD','');
-    define('DBHOST','localhost');
-    define('DBNAME','memory_oclock');
+	define('DBUSER','root'); // Utilisateur
+    define('DBPWD',''); // Mot de passe
+    define('DBHOST','localhost'); // Serveur de BDD
+    define('DBNAME','memory_oclock'); // Nom de la Database à créer
