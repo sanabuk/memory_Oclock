@@ -1,14 +1,11 @@
 <?php
 namespace App\Src;
 
-// include environnment constants
-include('config.php');
-
 use PDO;
 
 class Database {
 
-	// Use environnment constants to set variables connection
+	// Use environnment constants to set variables connection - find them in config.php
 	private $servername = DBHOST;
 	private $username = DBUSER;
 	private $password = DBPWD;

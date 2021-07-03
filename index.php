@@ -2,12 +2,14 @@
 require "vendor/autoload.php";
 require 'vendor/altorouter/altorouter/AltoRouter.php';
 
+include('config.php');
+
 $database = new App\Src\Database();
 $database->createDB();
 $database->createTable();
 
 $router = new AltoRouter();
-$router->setBasePath('memory_Oclock/');
+$router->setBasePath(BASEPATH);
 $router->map('GET','/',function(){
 	echo file_get_contents('app/view/html/view.php');
 });
