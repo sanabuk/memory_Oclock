@@ -1,0 +1,56 @@
+body #main {
+  font-family: fantasy, serif;
+  text-align: center;
+}
+body #main #btn-start {
+  width: 600px;
+  margin: auto;
+  margin-top: 50px;
+  font-size: 20px;
+  border: 1px solid lightgrey;
+  background-color: limegreen;
+  color: ghostwhite;
+  cursor: pointer;
+}
+body #boardgame {
+  width: 770px;
+  padding: 5px;
+  margin: auto;
+  min-height: 440px;
+  background-color: ghostwhite;
+}
+body #timer {
+  width: 600px;
+  margin: auto;
+  margin-top: 50px;
+  height: 20px;
+  border: 1px solid lightgrey;
+  display: none;
+}
+body #modal-score {
+  width: 770px;
+  margin: auto;
+}
+body #ask-player {
+  padding-top: 50px;
+  width: 770px;
+  margin: auto;
+}
+
+.card {
+  float: left;
+  margin: 5px;
+}
+.card .front {
+  width: 100px;
+  height: 100px;
+  background: url("../img/cards.png") 0 0 no-repeat;
+  display: none;
+}
+.card .back {
+  width: 100px;
+  height: 100px;
+  background-color: lightgrey;
+}
+
+/*# sourceMappingURL=main.css.map */
