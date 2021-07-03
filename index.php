@@ -16,7 +16,7 @@ $router->setBasePath('memory_Oclock/');
  * Route de base permettant d'afficher l'écran du jeu
  */
 $router->map('GET','/',function(){
-	echo file_get_contents('app/view/html/view.php');
+	echo file_get_contents('app/view/html/view.html');
 });
 
 /**
