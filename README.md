@@ -4,13 +4,13 @@
  
 ## Installation
 
-Après avoir cloné le repo sur votre serveur, exécuter un composer install afin de charger les différentes dépendances.
+Après avoir cloné le repo sur votre serveur, exécuter un composer install afin de charger les différentes dépendances. Si vous utilisez un serveur Apache, le fichier .htaccess est déjà configuré pour la redirection des requêtes. Se référer à https://altorouter.com/usage/rewrite-requests.html pour une configuration nginx.
  
 ## Notes et aides 
  
  Le fichier `config.php` contient les différentes variables nécessaires à la mise en place de la BDD. (variables de connexion et nom donné à la DB). Une seule table sera créée dans cette base de données et sera nommée `scores` 
  
- Dépendances tierces utilisées :
+### Dépendances tierces utilisées
 - Côté Front :
   - Jquery 3.5.1
   - progressbar.js@1.0.0 http://progressbarjs.readthedocs.org/en/1.0.0/ pour la barre de progression du temps de jeu.
@@ -18,13 +18,13 @@ Après avoir cloné le repo sur votre serveur, exécuter un composer install afi
 - Côté Back :
   - AltoRouter pour le routing PHP. Système de redirection Apache dans le .htaccess. Il faut adapter ce système de redirection en cas d'utilisation d'un serveur nginx.
 
-- Note d'introduction :
+### Note d'introduction
 
 L'implémentation du jeu à travers JS est un bon exercice de développement. Il convient toutefois de noter que cette implémentation permet à un joueur "mal intentionné" d'avoir connaissance du DOM de la page HTML et de pouvoir en déduire facilement les paires de cartes. Une implémentation du jeu côté back avec une historisation des différentes parties et des jeux de cartes générés serait d'un point de vue "sécurité" plus adaptée. La partie front n'aurait connaissance de la valeur d'une carte que lors de son "clic" dessus qui effectuerait un appel vers le back (via un système d'API). Cela pourrait être, à mon sens, un bon exercice d'approfondissement.   
 
 
 
-- Notes sur la partie persistance des scores :
+### Persistances des scores
 
 On utilise la classe `PDO` de PHP. https://www.php.net/manual/fr/book.pdo.php <br/>
 La fichier `Database.php` contient la classe qui implémente les différentes fonctions nécessaires :
@@ -41,6 +41,8 @@ La fichier `Database.php` contient la classe qui implémente les différentes fo
 return $query->fetchAll(); // Je retourne tous les résultats</pre></code>
 - On "include" le fichier `config.php` afin de setter les différentes variables de connexion
 - Pour chaque fonction, il ne faut pas oublier de refermer la connexion à la bdd en settant cette connexion à `null`
+
+### A retenir
 
 Il est important de bien avoir conscience que les injections SQL doivent absolument être évitées. L'utilisation des requêtes préparées est une façon de s'en prémunir. Les ORM du type Doctrine pour Symfony ou Eloquent pour Laravel font aussi le travail sous le capot sans que vous en ayez forcément conscience. Attention toutefois avec ces ORM, certaines de leurs fonctions permettent d'écrire des requêtes SQL brutes nécessaires dans certains cas. Si vous êtes amenés à devoir les utiliser de cette façon, consulter bien la documentation de ceux ci, une mauvaise utilisation pouvant entrainer des possibilités d'injections (Cas réel vu sur du vieux code legacy écrit avec des requêtes Eloquent à travers Laravel 5.4. C'est une vieille version de Laravel mais vous pourrez être amenés à travailler sur des projets n'étant pas forcément à jour...).   
 
