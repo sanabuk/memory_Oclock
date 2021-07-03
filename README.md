@@ -2,7 +2,11 @@
  
  Implémentation du jeu Memory en JS avec une persistance des scores en PHP
  
+## Installation
+
+Après avoir cloné le repo sur votre serveur, exécuter un composer install afin de charger les différentes dépendances.
  
+## Notes et aides 
  
  Le fichier `config.php` contient les différentes variables nécessaires à la mise en place de la BDD. (variables de connexion et nom donné à la DB). Une seule table sera créée dans cette base de données et sera nommée `scores` 
  
