@@ -10,15 +10,27 @@ $database->createTable();
 
 $router = new AltoRouter();
 $router->setBasePath(BASEPATH);
+$router->setBasePath('memory_Oclock/');
+
+/**
+ * Route de base permettant d'afficher l'écran du jeu
+ */
 $router->map('GET','/',function(){
 	echo file_get_contents('app/view/html/view.php');
 });
+
+/**
+ * Route permettant de récupérer les meilleurs scores
+ */
 $router->map('GET','/scores', function() use ($database){
 	$data = $database->getBestScores();
 	header('Content-Type: application/json');
 	echo json_encode($data);
 });
 
+/**
+ * Route permettant de persister le score du joueur si il a gagné
+ */
 $router->map('POST','/scores',function() use ($database){
 	$database->insert($_POST);
 	echo http_response_code(201);
