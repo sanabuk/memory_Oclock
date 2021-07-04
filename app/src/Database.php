@@ -36,10 +36,10 @@ class Database {
 
 			$sql = "CREATE DATABASE IF NOT EXISTS ".$this->db_name;
 			$conn->exec($sql);
+			$conn = null;
 		} catch(PDOException $e) {
 		  	throw $e;
-		}
-		$conn = null;
+		}	
 	}
 
 	/**
@@ -58,10 +58,10 @@ class Database {
 		  	score INT(50) NOT NULL
 		 	) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
 		 	$conn->exec($sql);
+		 	$conn = null;
 		} catch(PDOException $e) {
 		  	throw $e;
 		}
-		$conn = null;
 	}
 
 	/**
@@ -81,10 +81,10 @@ class Database {
 			$query->bindParam(":player", $player_name);
 			$query->bindParam(":score", $score, PDO::PARAM_INT);
 			$query->execute();
+			$conn = null;
 		} catch(PDOException $e) {
 		  	throw $e;
 		}
-		$conn = null;
 	}
 
 	/**
@@ -101,10 +101,11 @@ class Database {
 		  	$query->bindParam(":limit", $limit, PDO::PARAM_INT);
 			$query->execute();
 			$query->setFetchMode(PDO::FETCH_ASSOC);
+			$conn = null;
 		 	return $query->fetchAll();
 		} catch(PDOException $e) {
 		  	throw $e;
 		}
-		$conn = null;
+		
 	}
 }
